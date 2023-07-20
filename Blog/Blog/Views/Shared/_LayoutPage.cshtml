@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Html.Partial("PartialViews/Links/Css/_CssPartialView")
+</head>
+<body>
+ @Html.Partial("PartialViews/LayoutPartial/_NavbarPartialView")
+<div>
+    @RenderBody()
+</div>
+
+@Html.Partial("PartialViews/LayoutPartial/_FooterPartialView")
+
+@Html.Partial("PartialViews/Links/Js/_JsPartialView")
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<main id="main">
+
+    <!-- ======= Hero Slider Section ======= -->
+    @Html.Partial("PartialViews/Slider/_SliderPartialView")
+    <!-- End Hero Slider Section -->
+    <!-- ======= Post Grid Section ======= -->
+    <section id="posts" class="posts">
+        <div class="container" data-aos="fade-up">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    @Html.Partial("PartialViews/Post Entry/_PostEntryWithImageAndDetailPartialView")
+
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row g-5">
+                        <div class="col-lg-4 border-start custom-border">
+                            @Html.Partial("PartialViews/Post Entry/_PostEntryWithImagePartialView")
+                            @Html.Partial("PartialViews/Post Entry/_PostEntryWithImagePartialView")
+                            @Html.Partial("PartialViews/Post Entry/_PostEntryWithImagePartialView")
+                        </div>
+                        <div class="col-lg-4 border-start custom-border">
+                            @Html.Partial("PartialViews/Post Entry/_PostEntryWithImagePartialView")
+                            @Html.Partial("PartialViews/Post Entry/_PostEntryWithImagePartialView")
+                            @Html.Partial("PartialViews/Post Entry/_PostEntryWithImagePartialView")
+
+
+                        </div>
+
+                        <!-- Trending Section -->
+                        <div class="col-lg-4">
+
+                            @Html.Partial("PartialViews/Trending/_TrendingPartialView")
+
+                        </div> <!-- End Trending Section -->
+                    </div>
+                </div>
+
+            </div> <!-- End .row -->
+        </div>
+    </section> <!-- End Post Grid Section -->
+    <!-- ======= Culture Category Section ======= -->
+    @Html.Partial("PartialViews/CategorySection/_CategorySectionPartialView")
+    <!-- End Culture Category Section -->
+    <!-- ======= Business Category Section ======= -->
+    @Html.Partial("PartialViews/CategorySection/_CategorySectionPartialView")<!-- End Business Category Section -->
+    <!-- ======= Lifestyle Category Section ======= -->
+    @Html.Partial("PartialViews/CategorySection/_CategorySectionPartialView")<!-- End Lifestyle Category Section -->
+
+</main>
