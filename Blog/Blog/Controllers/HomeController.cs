@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Blog.Models.Context;
 
 namespace Blog.Controllers
 {
@@ -11,7 +12,7 @@ namespace Blog.Controllers
     {
         public ActionResult Index()
         {
-
+            
             return View();
         }
         
