@@ -1,0 +1,65 @@
+﻿@model Blog.Models.Dtos.RegisterDto
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<main id="main">
+    <section id="contact" class="contact mb-5">
+        <div class="container" data-aos="fade-up" style="width: 60%;">
+            <div class="row gy-4">
+                <div class="form mt-5">
+                    @using (Html.BeginForm())
+                    {
+                        <form>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <input type="text" name="Name" class="form-control" id="Name" placeholder="Adınız" required>
+                                    @Html.ValidationMessageFor(m=>m.Name,"",new {@class ="text-danger"})
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" name="middleName" id="middleName" placeholder="İkinci Adınız" required>
+
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" name="Surname" id="Surname" placeholder="Soyadınız" required>
+                                    @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <input type="email" class="form-control" name="Email" id="Email" placeholder="Email Adresiniz" required>
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <input type="tel" class="form-control" name="Phone" id="Phone" placeholder="Telefon Numaranız" required>
+                                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <input type="password" class="form-control" name="PasswordHash" id="PasswordHash" placeholder="Şifreniz" required>
+                                    @Html.ValidationMessageFor(m => m.PasswordHash, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="password" class="form-control" name="passwordRepeat" id="passwordRepeat" placeholder="Şifre Tekrarı" required>
+                                   
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="text-center"><button type="submit">Kayıt Ol</button></div>
+                            <br />
+                            <div class="text-center"><a href="@Url.Action("Login")">Zaten Hesabınız Var Mı? Giriş Yapın.</a></div>
+
+                        </form>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
