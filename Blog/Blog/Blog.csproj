@@ -277,14 +277,13 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Bussiness\CustomActionFilter.cs" />
     <Compile Include="Bussiness\DtoConverter\DtoConverter.cs" />
-    <Compile Include="Bussiness\Methods.cs" />
+    <Compile Include="Bussiness\Methods\Crypts.cs" />
     <Compile Include="Bussiness\UserRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Key\Keys.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\BlogContext.cs" />
     <Compile Include="Models\Dtos\BaseDto.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Blog.Bussiness.DtoConverter;
+using Blog.Bussiness.Methods;
 using Blog.Key;
 using Blog.Models.Context;
 using Blog.Models.Dtos;
@@ -18,7 +19,7 @@ namespace Blog.Bussiness
         public User LoginControl(LoginDto modelDto)
         {
             var model = blogContext.Users.Where(x => x.Email == modelDto.Email).FirstOrDefault();
-            var passHashDecrypt = Methods.Decrypt(model.PasswordHash, Keys.AesKey());
+            var passHashDecrypt = Crypts.Decrypt(model.PasswordHash);
             if (passHashDecrypt!=modelDto.Password)
                 return null;
 
@@ -35,7 +36,7 @@ namespace Blog.Bussiness
             {
 
                 modelDto.Id= Guid.NewGuid();
-                modelDto.PasswordHash = Methods.Encrypt(modelDto.PasswordHash,Keys.AesKey());
+                modelDto.PasswordHash = Crypts.Encrypt(modelDto.PasswordHash);
                 modelDto.CreateDate = DateTime.Now;
                 var user = DtoConverter.DtoConverter.RegisterToUserConverter(modelDto);
                 blogContext.Users.Add(user);
