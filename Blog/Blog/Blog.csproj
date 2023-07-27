@@ -278,7 +278,7 @@
     <Compile Include="Bussiness\CustomActionFilter.cs" />
     <Compile Include="Bussiness\DtoConverter\DtoConverter.cs" />
     <Compile Include="Bussiness\Methods\Crypts.cs" />
-    <Compile Include="Bussiness\UserRepository.cs" />
+    <Compile Include="Bussiness\Repositories\UserRepository\UserRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
@@ -297,7 +297,7 @@
     <Compile Include="Models\Entities\PostLike.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Bussiness\Repositories\UserRepository\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\main.css" />
@@ -461,6 +461,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
