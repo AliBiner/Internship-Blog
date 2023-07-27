@@ -1,5 +1,6 @@
 using System.Web.Mvc;
 using Blog.Bussiness;
+using Blog.Bussiness.Repositories.Login_Repository;
 using Blog.Repository;
 using Unity;
 using Unity.Injection;
@@ -18,6 +19,7 @@ namespace Blog
             
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IUserRepository, UserRepository>();
+            container.RegisterType<IAccountRepository, AccountRepository>();
             
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

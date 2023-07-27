@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Blog.Bussiness.DtoConverter;
 using Blog.Bussiness.Methods;
-using Blog.Key;
 using Blog.Models.Context;
 using Blog.Models.Dtos;
 using Blog.Models.User;
@@ -15,33 +14,37 @@ namespace Blog.Bussiness
 {
     public class UserRepository: IUserRepository
     {
-        BlogContext blogContext = new BlogContext();
-        public User LoginControl(LoginDto modelDto)
+        private readonly BlogContext _blogContext;
+
+        public UserRepository()
         {
-            var model = blogContext.Users.Where(x => x.Email == modelDto.Email).FirstOrDefault();
-            var passHashDecrypt = Crypts.Decrypt(model.PasswordHash);
-            if (passHashDecrypt!=modelDto.Password)
-                return null;
-
-            return model;
+            _blogContext = new BlogContext();
         }
-
-        public Boolean Add(RegisterDto modelDto)
+        
+        public string Add(RegisterDto modelDto)
         {
             if (modelDto==null)
             {
-                return false;
+                return "Model Boş";
             }
             else
             {
-
-                modelDto.Id= Guid.NewGuid();
-                modelDto.PasswordHash = Crypts.Encrypt(modelDto.PasswordHash);
-                modelDto.CreateDate = DateTime.Now;
-                var user = DtoConverter.DtoConverter.RegisterToUserConverter(modelDto);
-                blogContext.Users.Add(user);
-                blogContext.SaveChanges();
-                return true;
+                var emailControl = _blogContext.Users.Any(x => x.Email == modelDto.Email || x.Phone==modelDto.Phone);
+                if (emailControl==true)
+                {
+                    return "Bu Email veya Telefon Zaten Kullanılmaktadır.";
+                }
+                else
+                {
+                    modelDto.Id = Guid.NewGuid();
+                    modelDto.PasswordHash = Crypts.Encrypt(modelDto.PasswordHash);
+                    modelDto.CreateDate = DateTime.Now;
+                    var user = DtoConverter.DtoConverter.RegisterToUserConverter(modelDto);
+                    _blogContext.Users.Add(user);
+                    _blogContext.SaveChanges();
+                    return "Kayıt İşlemi Başarılı.";
+                }
+                
             }
             
         }

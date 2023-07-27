@@ -10,8 +10,7 @@ namespace Blog.Repository
 {
     public interface IUserRepository
     {
-        public User LoginControl(LoginDto modelDto);
-        public Boolean Add(RegisterDto modelDto);
+        public string Add(RegisterDto modelDto);
         public void Update(User entity);
         public void Remove(User entity);
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Blog.Bussiness.Repositories.Login_Repository;
 using Blog.Models.Dtos;
 using Blog.Models.User;
 using Blog.Repository;
@@ -13,10 +14,13 @@ namespace Blog.Controllers
     public class AccountController : Controller
     {
         private IUserRepository _userRepository;
+        private IAccountRepository _accountRepository;
 
-        public AccountController(IUserRepository userRepository)
+        public AccountController(IUserRepository userRepository, IAccountRepository accountRepository)
         {
             this._userRepository = userRepository;
+            this._accountRepository = accountRepository;
+            
         }
 
         // GET: Login
@@ -24,16 +28,18 @@ namespace Blog.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(LoginDto model)
         {
+            
             if (!ModelState.IsValid)
             {
                 return View();
             }
             else
             {
-                var userModel = _userRepository.LoginControl(model);
+                var userModel = _accountRepository.LogIn(model);
                 if (userModel == null)
                 {
                     ViewBag.Error = "Email veya Şifre Uyuşmuyor";
@@ -42,12 +48,7 @@ namespace Blog.Controllers
                 }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(userModel.MiddleName,false);
-                    Session["Name"] = userModel.Name;
-                    Session["Surname"] = userModel.Surname;
-                    Session["Email"] = userModel.Email;
-                    Session["Id"] = userModel.Id;
-                    Session["Role"] = userModel.Role;
+                    _accountRepository.SetSession(userModel);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -64,28 +65,22 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult Register(RegisterDto model)
         {
+
             if (!ModelState.IsValid)
             {
                 return View();
             }
             else
             {
-                var control = _userRepository.Add(model);
-                if (control==false)
-                {
-                    return View();
-                }
-                else
-                {
-                    return RedirectToAction("Login", "Account");
-                }
+                var result = _userRepository.Add(model);
+                ViewBag.Error = result;
+                return View();
             }
         }
 
         public ActionResult Logout()
         {
-            Session.Clear();
-            FormsAuthentication.SignOut();
+            _accountRepository.LogOut();
             return RedirectToActionPermanent("Index", "Home");
         }
     }

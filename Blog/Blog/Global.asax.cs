@@ -13,6 +13,7 @@ namespace Blog
     {
         protected void Application_Start()
         {
+           
             UnityConfig.RegisterComponents();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
