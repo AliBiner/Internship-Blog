@@ -12,35 +12,28 @@ using Blog.Repository;
 namespace Blog.Controllers
 {
     [CustomActionFilter]
-    public class PostController : Controller
+    public class EntryController : Controller
     {
-        private readonly IPostRepository _postRepository;
+        private readonly IEntryRepository _entryRepository;
 
-        public PostController(IPostRepository postRepository)
+        public EntryController(IEntryRepository entryRepository)
         {
-            _postRepository = postRepository;
+            _entryRepository = entryRepository;
         }
 
-        public ActionResult Post()
-        {
-            var postStringId = "34ab2db2-f742-40b9-9f3c-3cbfc127ac27";
-            Guid postId = Guid.Parse(postStringId);
-            var model = _postRepository.GetPostById(postId);
-            return View(model);
-        }
 
-        // GET: Post
-        public ActionResult PostShare()
+        // GET: Entry
+        public ActionResult EntryShare()
         {
             return View();
         }
 
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult PostShare(Post post)
+        public ActionResult EntryShare(Entry entry)
         {
             var userEmail = Session["Email"].ToString();
-            _postRepository.AddPostByUserId(post, userEmail);
+            _entryRepository.AddEntryByUserId(entry, userEmail);
 
             return View();
         }

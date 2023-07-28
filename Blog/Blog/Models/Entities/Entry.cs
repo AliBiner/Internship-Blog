@@ -9,12 +9,12 @@ using Blog.Models.Entities;
 
 namespace Blog.Models.PostTable
 {
-    public class Post : BaseEntity
+    public class Entry : BaseEntity
     {
-        public Post()
+        public Entry()
         {
             Comments = new List<Comment>();
-            PostLikes = new List<PostLike>();
+            PostLikes = new List<EntryLike>();
         }
 
         public string Title { get; set; }
@@ -31,7 +31,7 @@ namespace Blog.Models.PostTable
         public Category Category { get; set; }
 
         public List<Comment> Comments { get; set; }
-        public List<PostLike> PostLikes { get; set; }
+        public List<EntryLike> PostLikes { get; set; }
 
     }
 }

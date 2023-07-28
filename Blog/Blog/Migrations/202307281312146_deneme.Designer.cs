@@ -13,7 +13,7 @@ namespace Blog.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202307280352319_deneme"; }
+            get { return "202307281312146_deneme"; }
         }
         
         string IMigrationMetadata.Source

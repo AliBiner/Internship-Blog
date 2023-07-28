@@ -7,13 +7,13 @@ using Blog.Models.PostTable;
 
 namespace Blog.Models.Entities
 {
-    public class PostLike:BaseEntity
+    public class EntryLike:BaseEntity
     {
         public Boolean Like { get; set; }
         public Boolean Dislike { get; set; }
 
        
         public User.User User { get; set; }
-        public Post Post { get; set; }
+        public Entry Entry { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿@model Blog.Models.PostTable.Post
+﻿@model Blog.Models.PostTable.Entry
 @{
-    ViewBag.Title = "PostShare";
+    ViewBag.Title = "EntryShare";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
@@ -63,7 +63,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Editör</h5>
-                            @using (Html.BeginForm("PostShare", "Post", FormMethod.Post))
+                            @using (Html.BeginForm("EntryShare", "Entry", FormMethod.Post))
                             {
                                 @Html.TextAreaFor(model=>model.Description, new {@class= "editor" })
                                 <input type="submit" value="Yayınla"/>

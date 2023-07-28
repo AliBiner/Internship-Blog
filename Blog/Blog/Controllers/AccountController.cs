@@ -1,16 +1,22 @@
 ﻿using System.Web.Mvc;
+using Blog.Bussiness;
 using Blog.Bussiness.Repositories.Login_Repository;
 using Blog.Models.Dtos;
+using Blog.Repository;
 
 namespace Blog.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAccountPRepository _accountPRepository;
+        private readonly IAccountRepository _accountRepository;
+        private readonly IUserRepository _userRepository;
 
-        public AccountController(IAccountPRepository accountPRepository)
+
+        public AccountController(IAccountRepository accountRepository,IUserRepository _userRepository)
         {
-            _accountPRepository = accountPRepository;
+            this._accountRepository = accountRepository;
+            this._userRepository = _userRepository;
+
         }
 
         // GET: Login
@@ -24,7 +30,7 @@ namespace Blog.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            var userModel = _accountPRepository.LogIn(model);
+            var userModel = _accountRepository.LogIn(model);
             if (userModel == null)
             {
                 ViewBag.Error = "Email veya Şifre Uyuşmuyor";
@@ -32,7 +38,7 @@ namespace Blog.Controllers
                 return View();
             }
 
-            _accountPRepository.SetSession(userModel);
+            _accountRepository.SetSession(userModel);
 
             return RedirectToAction("Index", "Home");
         }
@@ -47,14 +53,14 @@ namespace Blog.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            var result = _accountPRepository.Register(model);
+            var result = _accountRepository.Register(model);
             ViewBag.Error = result;
             return View();
         }
-
+        [CustomActionFilter]
         public ActionResult SignOut()
         {
-            _accountPRepository.LogOut();
+            _accountRepository.LogOut();
             return RedirectToAction("Index","Home");
         }
     }

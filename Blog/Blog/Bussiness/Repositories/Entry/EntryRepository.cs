@@ -7,20 +7,20 @@ using Blog.Models.Context;
 
 namespace Blog.Bussiness.Repositories.Post
 {
-    public class PostRepository : IPostRepository
+    public class EntryRepository : IEntryRepository
     {
         private readonly BlogContext _blogContext;
 
-        public PostRepository(BlogContext blogContext)
+        public EntryRepository(BlogContext blogContext)
         {
             _blogContext = blogContext;
         }
 
-        public string AddPostByUserId(Models.PostTable.Post post, string userEmail)
+        public string AddEntryByUserId(Models.PostTable.Entry entry, string userEmail)
         {
-            Models.PostTable.Post model = new Models.PostTable.Post();
+            Models.PostTable.Entry model = new Models.PostTable.Entry();
 
-            model.Description = post.Description;
+            model.Description = entry.Description;
             model.CreateDate = DateTime.Now;
             model.Id = Guid.NewGuid();
             model.User = _blogContext.Users.Where(x=>x.Email == userEmail).FirstOrDefault();
@@ -38,7 +38,7 @@ namespace Blog.Bussiness.Repositories.Post
             
         }
 
-        public Models.PostTable.Post GetPostById(Guid id)
+        public Models.PostTable.Entry GetEntryById(Guid id)
         {
             var postModel = _blogContext.Posts.FirstOrDefault(x => x.Id == id);
             return postModel;

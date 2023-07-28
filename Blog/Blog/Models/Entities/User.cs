@@ -16,9 +16,9 @@ namespace Blog.Models.User
     {
         public User()
         {
-            Posts = new List<Post>();
+            Posts = new List<Entry>();
             CommentLikes = new List<Comment_Like>();
-            PostLikes = new List<PostLike>();
+            PostLikes = new List<EntryLike>();
         }
 
         public string Name { get; set; }
@@ -42,9 +42,9 @@ namespace Blog.Models.User
         public byte[]? Image { get; set; }
         public DateTime? LostLogin { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public List<Entry> Posts { get; set; }
         public List<Comment_Like> CommentLikes { get; set; }
-        public List<PostLike> PostLikes { get; set; }
+        public List<EntryLike> PostLikes { get; set; }
 
     }
 }

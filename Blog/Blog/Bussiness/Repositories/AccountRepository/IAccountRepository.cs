@@ -8,7 +8,7 @@ using Blog.Models.User;
 
 namespace Blog.Bussiness.Repositories.Login_Repository
 {
-    public interface IAccountPRepository
+    public interface IAccountRepository
     {
         string Register(RegisterDto model);
         User LogIn(LoginDto model);

@@ -9,10 +9,10 @@ using Blog.Models.User;
 
 namespace Blog.Bussiness.Repositories.Post
 {
-    public interface IPostRepository
+    public interface IEntryRepository
     {
-        string AddPostByUserId(Models.PostTable.Post post, string userEmail);
-        Models.PostTable.Post GetPostById(Guid id);
+        string AddEntryByUserId(Models.PostTable.Entry entry, string userEmail);
+        Models.PostTable.Entry GetEntryById(Guid id);
 
         string UploadImage(HttpPostedFileBase file);
 

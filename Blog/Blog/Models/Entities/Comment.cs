@@ -18,7 +18,7 @@ namespace Blog.Models.Entities
         public Boolean Published { get; set; }
 
         
-        public Post Post { get; set; }
+        public Entry Entry { get; set; }
 
         public List<Comment_Like> CommentLikes { get; set; }
     }

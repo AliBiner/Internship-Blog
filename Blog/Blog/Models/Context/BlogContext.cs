@@ -19,7 +19,7 @@ namespace Blog.Models.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Comment_Like> CommentLikes { get; set; }
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<PostLike> PostLikes { get; set; }
+        public DbSet<Entry> Posts { get; set; }
+        public DbSet<EntryLike> PostLikes { get; set; }
     }
 }

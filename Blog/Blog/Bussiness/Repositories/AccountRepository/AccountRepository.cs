@@ -10,11 +10,11 @@ using Blog.Models.User;
 
 namespace Blog.Bussiness.Repositories.Login_Repository
 {
-    public class AccountPRepository : IAccountPRepository
+    public class AccountRepository : IAccountRepository
     {
         private readonly BlogContext _blogContext;
 
-        public AccountPRepository()
+        public AccountRepository()
         {
             _blogContext = new BlogContext();
         }

@@ -59,10 +59,7 @@
                 else if (Session["Role"].ToString() == "Admin")
                 {
                     <li>
-                        <a href="@Url.Action("PostShare","Post")">Gönderi Paylaş</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Post","Post")">Post</a>
+                        <a href="@Url.Action("EntryShare","Entry")">Gönderi Paylaş</a>
                     </li>
                     <li class="dropdown">
                         <a>
@@ -85,11 +82,11 @@
                 {
                     <li class="dropdown">
                         <a>
-                            <span>Postlar</span> <i class="bi bi-chevron-down dropdown-indicator"></i>
+                            <span>Entrylar</span> <i class="bi bi-chevron-down dropdown-indicator"></i>
                         </a>
                         <ul>
                             <li>
-                                <a href="@Url.Action("Index", "Settings")">Post Paylaş</a>
+                                <a href="@Url.Action("Index", "Settings")">Entry Paylaş</a>
                             </li>
                             <li>
 
