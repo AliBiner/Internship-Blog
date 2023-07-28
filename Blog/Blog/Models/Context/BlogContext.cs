@@ -12,7 +12,7 @@ namespace Blog.Models.Context
     {
         public BlogContext(): base("BlogDbContext")
         {
-            
+            this.Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<User.User> Users { get; set; }

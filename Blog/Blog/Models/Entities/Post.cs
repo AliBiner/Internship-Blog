@@ -16,6 +16,7 @@ namespace Blog.Models.PostTable
             Comments = new List<Comment>();
             PostLikes = new List<PostLike>();
         }
+
         public string Title { get; set; }
         public string MetaTitle { get; set; }
         public string Slug { get; set; }

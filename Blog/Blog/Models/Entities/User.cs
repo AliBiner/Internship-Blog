@@ -20,9 +20,13 @@ namespace Blog.Models.User
             CommentLikes = new List<Comment_Like>();
             PostLikes = new List<PostLike>();
         }
+
         public string Name { get; set; }
         public string MiddleName { get; set; }
         public string Surname { get; set; }
+
+        [MaxLength(250,ErrorMessage = "Max. 250 Karakter Olmalıdır.")]
+        public string? About { get; set; }
 
         [Required]
         [Index( IsUnique = true)]
@@ -32,7 +36,6 @@ namespace Blog.Models.User
         [Index(IsUnique = true)]
         [MaxLength(15)]
         public string Phone { get; set; }
-
         public string PasswordHash { get; set; }
         public string Role { get; set; }
         public string? ProfileDescription { get; set; }
