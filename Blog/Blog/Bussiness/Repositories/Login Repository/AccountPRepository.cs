@@ -20,13 +20,14 @@ namespace Blog.Bussiness.Repositories.Login_Repository
         }
         public User LogIn(LoginDto model)
         {
-            var userModel = _blogContext.Users.Where(x => x.Email == model.Email).FirstOrDefault();
+            var userModel = _blogContext.Users.FirstOrDefault(x => x.Email == model.Email);
             var passHashDecrypt = Crypts.Decrypt(userModel.PasswordHash);
             if (passHashDecrypt != model.Password)
                 return null;
 
             return userModel;
         }
+        [CustomActionFilter]
         public void LogOut()
         {
             HttpContext.Current.Session.Abandon();
@@ -50,7 +51,7 @@ namespace Blog.Bussiness.Repositories.Login_Repository
                     model.Id = Guid.NewGuid();
                     model.PasswordHash = Crypts.Encrypt(model.PasswordHash);
                     model.CreateDate = DateTime.Now;
-                    var user = DtoConverter.DtoConverter.RegisterToUserConverter(model);
+                    var user = DtoConverter.DtoConverter.ConverterRegisterToUser(model);
                     _blogContext.Users.Add(user);
                     _blogContext.SaveChanges();
                     return "Kayıt İşlemi Başarılı.";
@@ -58,6 +59,7 @@ namespace Blog.Bussiness.Repositories.Login_Repository
 
             }
         }
+        [CustomActionFilter]
         public void SetSession(User entity)
         {
             FormsAuthentication.SetAuthCookie(entity.MiddleName, false);
