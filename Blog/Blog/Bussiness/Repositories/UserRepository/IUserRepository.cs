@@ -10,7 +10,6 @@ namespace Blog.Repository
 {
     public interface IUserRepository
     {
-        public string Add(RegisterDto modelDto);
         public void Update(User entity);
         public void Remove(User entity);
     }

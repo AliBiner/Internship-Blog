@@ -19,7 +19,7 @@ namespace Blog
             
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IUserRepository, UserRepository>();
-            container.RegisterType<IAccountRepository, AccountRepository>();
+            container.RegisterType<IAccountPRepository, AccountPRepository>();
             
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

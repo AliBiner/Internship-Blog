@@ -1,26 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
+﻿using System.Web.Mvc;
 using Blog.Bussiness.Repositories.Login_Repository;
 using Blog.Models.Dtos;
-using Blog.Models.User;
-using Blog.Repository;
 
 namespace Blog.Controllers
 {
     public class AccountController : Controller
     {
-        private IUserRepository _userRepository;
-        private IAccountRepository _accountRepository;
+        private readonly IAccountPRepository _accountPRepository;
 
-        public AccountController(IUserRepository userRepository, IAccountRepository accountRepository)
+        public AccountController(IAccountPRepository accountPRepository)
         {
-            this._userRepository = userRepository;
-            this._accountRepository = accountRepository;
-            
+            _accountPRepository = accountPRepository;
         }
 
         // GET: Login
@@ -32,29 +22,19 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult Login(LoginDto model)
         {
-            
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return View();
+
+            var userModel = _accountPRepository.LogIn(model);
+            if (userModel == null)
             {
+                ViewBag.Error = "Email veya Şifre Uyuşmuyor";
+
                 return View();
             }
-            else
-            {
-                var userModel = _accountRepository.LogIn(model);
-                if (userModel == null)
-                {
-                    ViewBag.Error = "Email veya Şifre Uyuşmuyor";
-                    
-                    return View();
-                }
-                else
-                {
-                    _accountRepository.SetSession(userModel);
 
-                    return RedirectToAction("Index", "Home");
-                }
+            _accountPRepository.SetSession(userModel);
 
-            }
-            
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Register()
@@ -65,23 +45,17 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult Register(RegisterDto model)
         {
+            if (!ModelState.IsValid) return View();
 
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            else
-            {
-                var result = _userRepository.Add(model);
-                ViewBag.Error = result;
-                return View();
-            }
+            var result = _accountPRepository.Register(model);
+            ViewBag.Error = result;
+            return View();
         }
 
-        public ActionResult Logout()
+        public ActionResult SignOut()
         {
-            _accountRepository.LogOut();
-            return RedirectToActionPermanent("Index", "Home");
+            _accountPRepository.LogOut();
+            return RedirectToAction("Index","Home");
         }
     }
 }
