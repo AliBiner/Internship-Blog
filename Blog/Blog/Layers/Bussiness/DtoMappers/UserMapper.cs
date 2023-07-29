@@ -2,47 +2,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Blog.Layers.Bussiness.DtoMappers;
 using Blog.Models.Dtos;
 using Blog.Models.User;
 
 namespace Blog.Bussiness.DtoConverter
 {
-    public class DtoConverter
+    public class UserMapper : IUserMapper
     {
-        public static User ConverterRegisterToUser(RegisterDto model)
+        public User RegisterDtoToUser(RegisterDto model)
         {
-            User user = new User();
+            User user = new User()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                MiddleName = model.MiddleName,
+                Surname = model.Surname,
+                Email = model.Email,
+                Phone = model.Phone,
+                PasswordHash = model.PasswordHash,
+                CreateDate = model.CreateDate,
+                Role = "User"
+            };
 
-            user.Id = model.Id;
-            user.Name = model.Name;
-            user.MiddleName = model.MiddleName;
-            user.Surname = model.Surname;
-            user.Email = model.Email;
-            user.Phone = model.Phone;
-            user.PasswordHash = model.PasswordHash;
-            user.CreateDate = model.CreateDate;
-            user.Role = "User";
+            
             return user;
         }
 
-
-        public static UserDto ConverterUserToUserDto(User model)
+        public UserDto ToUserDto(User model)
         {
-            UserDto ud = new UserDto();
+            UserDto ud = new UserDto()
+            {
+                Email = model.Email,
+                Role = model.Role,
+                Phone = model.Phone,
+                CreateDate = model.CreateDate,
+                Id = model.Id,
+                FullName = model.Name + " " + model.MiddleName + " " + model.Surname,
+                Name = model.Name,
+                MiddleName = model.MiddleName,
+                Surname = model.Surname
+        };
 
-            ud.Email = model.Email;
-            ud.Role = model.Role;
-            ud.Phone = model.Phone;
-            ud.CreateDate = model.CreateDate;
-            ud.Id = model.Id;
-            ud.FullName = model.Name + " " + model.MiddleName + " " + model.Surname;
-            ud.Name = model.Name;
-            ud.MiddleName = model.MiddleName;
-            ud.Surname = model.Surname;
-
+            
             return ud;
         }
-
-
     }
 }

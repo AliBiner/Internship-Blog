@@ -24,6 +24,7 @@ namespace Blog
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IAccountRepository, AccountRepository>();
             container.RegisterType<IEntryRepository, EntryRepository>();
+            container.RegisterType<IUserMapper, UserMapper>();
             
             
             

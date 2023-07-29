@@ -290,6 +290,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Layers\Bussiness\CustomActionFilter.cs" />
+    <Compile Include="Layers\Bussiness\DtoMappers\IUserMapper.cs" />
     <Compile Include="Layers\Bussiness\DtoMappers\UserMapper.cs" />
     <Compile Include="Layers\Bussiness\Methods\Crypts.cs" />
     <Compile Include="Layers\Repositories\AccountRepository\IAccountRepository.cs" />
