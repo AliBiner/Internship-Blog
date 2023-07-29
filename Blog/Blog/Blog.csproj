@@ -289,18 +289,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="Bussiness\CustomActionFilter.cs" />
-    <Compile Include="Bussiness\DtoConverter\DtoConverter.cs" />
-    <Compile Include="Bussiness\Methods\Crypts.cs" />
-    <Compile Include="Bussiness\Repositories\AccountRepository\IAccountRepository.cs" />
-    <Compile Include="Bussiness\Repositories\AccountRepository\AccountRepository.cs" />
-    <Compile Include="Bussiness\Repositories\Entry\IEntryRepository.cs" />
-    <Compile Include="Bussiness\Repositories\Entry\EntryRepository.cs" />
-    <Compile Include="Bussiness\Repositories\UserRepository\UserRepository.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\EntryController.cs" />
-    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Layers\Bussiness\CustomActionFilter.cs" />
+    <Compile Include="Layers\Bussiness\DtoMappers\UserMapper.cs" />
+    <Compile Include="Layers\Bussiness\Methods\Crypts.cs" />
+    <Compile Include="Layers\Repositories\AccountRepository\IAccountRepository.cs" />
+    <Compile Include="Layers\Repositories\AccountRepository\AccountRepository.cs" />
+    <Compile Include="Layers\Repositories\Entry\IEntryRepository.cs" />
+    <Compile Include="Layers\Repositories\Entry\EntryRepository.cs" />
+    <Compile Include="Layers\Repositories\UserRepository\UserRepository.cs" />
+    <Compile Include="Layers\Controllers\HomeController.cs" />
+    <Compile Include="Layers\Controllers\AccountController.cs" />
+    <Compile Include="Layers\Controllers\EntryController.cs" />
+    <Compile Include="Layers\Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -309,21 +309,21 @@
       <DependentUpon>202307281312146_deneme.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Context\BlogContext.cs" />
-    <Compile Include="Models\Dtos\BaseDto.cs" />
-    <Compile Include="Models\Dtos\UpdatePasswordDto.cs" />
-    <Compile Include="Models\Dtos\LoginDto.cs" />
-    <Compile Include="Models\Dtos\RegisterDto.cs" />
-    <Compile Include="Models\Dtos\UserDto.cs" />
-    <Compile Include="Models\Entities\BaseEntity.cs" />
-    <Compile Include="Models\Entities\Category.cs" />
-    <Compile Include="Models\Entities\Comment.cs" />
-    <Compile Include="Models\Entities\Comment_Like.cs" />
-    <Compile Include="Models\Entities\Entry.cs" />
-    <Compile Include="Models\Entities\EntryLike.cs" />
-    <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Layers\Bussiness\Context\BlogContext.cs" />
+    <Compile Include="Layers\Models\Dtos\BaseDto.cs" />
+    <Compile Include="Layers\Models\Dtos\UpdatePasswordDto.cs" />
+    <Compile Include="Layers\Models\Dtos\LoginDto.cs" />
+    <Compile Include="Layers\Models\Dtos\RegisterDto.cs" />
+    <Compile Include="Layers\Models\Dtos\UserDto.cs" />
+    <Compile Include="Layers\Models\Entities\BaseEntity.cs" />
+    <Compile Include="Layers\Models\Entities\Category.cs" />
+    <Compile Include="Layers\Models\Entities\Comment.cs" />
+    <Compile Include="Layers\Models\Entities\Comment_Like.cs" />
+    <Compile Include="Layers\Models\Entities\Entry.cs" />
+    <Compile Include="Layers\Models\Entities\EntryLike.cs" />
+    <Compile Include="Layers\Models\Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Bussiness\Repositories\UserRepository\IUserRepository.cs" />
+    <Compile Include="Layers\Repositories\UserRepository\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\main.css" />

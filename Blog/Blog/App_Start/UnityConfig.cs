@@ -1,7 +1,9 @@
 using System.Web.Mvc;
 using Blog.Bussiness;
+using Blog.Bussiness.DtoConverter;
 using Blog.Bussiness.Repositories.Login_Repository;
 using Blog.Bussiness.Repositories.Post;
+using Blog.Layers.Bussiness.DtoMappers;
 using Blog.Repository;
 using Unity;
 using Unity.Injection;
@@ -22,6 +24,7 @@ namespace Blog
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IAccountRepository, AccountRepository>();
             container.RegisterType<IEntryRepository, EntryRepository>();
+            
             
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

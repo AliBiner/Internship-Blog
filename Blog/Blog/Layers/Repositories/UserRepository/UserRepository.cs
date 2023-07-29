@@ -51,7 +51,7 @@ namespace Blog.Bussiness
         public UserDto GetByEmail(string email)
         {
             var userModel = _blogContext.Users.FirstOrDefault(x => x.Email == email);
-            var model = DtoConverter.DtoConverter.ConverterUserToUserDto(userModel);
+            var model = DtoConverter.UserMapper.ConverterUserToUserDto(userModel);
             return model;
         }
 

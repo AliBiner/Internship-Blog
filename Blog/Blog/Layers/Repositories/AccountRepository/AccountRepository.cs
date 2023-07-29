@@ -51,7 +51,7 @@ namespace Blog.Bussiness.Repositories.Login_Repository
                     model.Id = Guid.NewGuid();
                     model.PasswordHash = Crypts.Encrypt(model.PasswordHash);
                     model.CreateDate = DateTime.Now;
-                    var user = DtoConverter.DtoConverter.ConverterRegisterToUser(model);
+                    var user = DtoConverter.UserMapper.ConverterRegisterToUser(model);
                     _blogContext.Users.Add(user);
                     _blogContext.SaveChanges();
                     return "Kayıt İşlemi Başarılı.";
