@@ -4,6 +4,7 @@ using Blog.Bussiness.DtoConverter;
 using Blog.Bussiness.Repositories.Login_Repository;
 using Blog.Bussiness.Repositories.Post;
 using Blog.Layers.Bussiness.DtoMappers;
+using Blog.Layers.Bussiness.Services;
 using Blog.Repository;
 using Unity;
 using Unity.Injection;
@@ -25,6 +26,7 @@ namespace Blog
             container.RegisterType<IAccountRepository, AccountRepository>();
             container.RegisterType<IEntryRepository, EntryRepository>();
             container.RegisterType<IUserMapper, UserMapper>();
+            container.RegisterType<IUserService, UserService>();
             
             
             

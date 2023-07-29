@@ -293,6 +293,8 @@
     <Compile Include="Layers\Bussiness\DtoMappers\IUserMapper.cs" />
     <Compile Include="Layers\Bussiness\DtoMappers\UserMapper.cs" />
     <Compile Include="Layers\Bussiness\Methods\Crypts.cs" />
+    <Compile Include="Layers\Bussiness\Services\IUserService.cs" />
+    <Compile Include="Layers\Bussiness\Services\UserService.cs" />
     <Compile Include="Layers\Repositories\AccountRepository\IAccountRepository.cs" />
     <Compile Include="Layers\Repositories\AccountRepository\AccountRepository.cs" />
     <Compile Include="Layers\Repositories\Entry\IEntryRepository.cs" />
