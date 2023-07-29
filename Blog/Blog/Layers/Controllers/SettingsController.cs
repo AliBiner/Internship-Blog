@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Blog.Bussiness;
+using Blog.Layers.Bussiness.Services;
+using Blog.Layers.Models.Dtos;
 using Blog.Models.Dtos;
 using Blog.Repository;
 
@@ -13,43 +15,50 @@ namespace Blog.Controllers
     [CustomActionFilter]
     public class SettingsController : Controller
     {
-        private readonly IUserRepository _userRepository;
-        public SettingsController(IUserRepository _userRepository)
+        private readonly IUserService _userService;
+
+        public SettingsController(IUserService userService)
         {
-            this._userRepository = _userRepository;
+            _userService = userService;
         }
+
         // GET: Settings
         public ActionResult Index()
         {
             var email = Session["Email"].ToString();
-            var model= _userRepository.GetByEmail(email);
-            var changePassword = new UpdatePasswordDto();
+            var model = _userService.GetUserByEmail(email);
             return View(model);
         }
 
-       
-        [HttpPost]
-        public ActionResult UpdatePassword(string currentPassword,string newPassword)
+        [ChildActionOnly]
+        public ActionResult UpdatePassword()
         {
-            var result = _userRepository.UpdatePassword(currentPassword,newPassword, Session["Email"].ToString());
+            return PartialView("UpdatePassword");
+        }
+        
+        [HttpPost]
+        public ActionResult UpdatePassword(UpdatePasswordDto dto)
+        {
+            var sessionEmail = Session["Email"].ToString();
+            var result = _userService.UpdatePasswordByEmail(dto, sessionEmail);
+            return RedirectToAction("Index","Settings");
+        }
 
-            return RedirectToAction("Index", "Settings", result);
+        [ChildActionOnly]
+        public ActionResult UpdateUser()
+        {
+            var sessionEmail = Session["Email"].ToString();
+            ViewData["Model"] = _userService.GetUserByEmail(sessionEmail);
+            return PartialView();
         }
 
         [HttpPost]
-        public ActionResult UpdateUser(string name, string? middleName, string surname, string email, string phone )
+        public ActionResult UpdateUser(UpdateUserInformationDto dto )
         {
-            var userDto = new UserDto();
-            userDto.Name = name;
-            userDto.MiddleName = middleName;
-            userDto.Surname = surname;
-            userDto.Email = email;
-            userDto.Phone = phone;
             var sessionEmail = Session["Email"].ToString();
 
-            var result = _userRepository.UpdateUser(userDto,sessionEmail);
-
-            return RedirectToAction("Index", "Settings",result);
+            var result = _userService.Update(dto, sessionEmail);
+            return RedirectToAction("Index","Settings");
         }
     }
 }

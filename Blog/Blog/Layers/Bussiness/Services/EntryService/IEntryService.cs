@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Layers.Bussiness.Services
+namespace Blog.Layers.Bussiness.Services.EntryService
 {
-    public interface IUserService
+    interface IEntryService
     {
-
     }
 }

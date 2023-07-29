@@ -1,8 +1,7 @@
 using System.Web.Mvc;
 using Blog.Bussiness;
 using Blog.Bussiness.DtoConverter;
-using Blog.Bussiness.Repositories.Login_Repository;
-using Blog.Bussiness.Repositories.Post;
+using Blog.Bussiness.Repositories.Entry;
 using Blog.Layers.Bussiness.DtoMappers;
 using Blog.Layers.Bussiness.Services;
 using Blog.Repository;
@@ -23,7 +22,6 @@ namespace Blog
             
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IUserRepository, UserRepository>();
-            container.RegisterType<IAccountRepository, AccountRepository>();
             container.RegisterType<IEntryRepository, EntryRepository>();
             container.RegisterType<IUserMapper, UserMapper>();
             container.RegisterType<IUserService, UserService>();

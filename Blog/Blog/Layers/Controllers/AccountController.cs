@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using Blog.Bussiness;
-using Blog.Bussiness.Repositories.Login_Repository;
+using Blog.Layers.Bussiness.Services;
 using Blog.Models.Dtos;
 using Blog.Repository;
 
@@ -8,16 +8,13 @@ namespace Blog.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAccountRepository _accountRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly IUserService _userService;
 
-
-        public AccountController(IAccountRepository accountRepository,IUserRepository _userRepository)
+        public AccountController(IUserService userService)
         {
-            this._accountRepository = accountRepository;
-            this._userRepository = _userRepository;
-
+            _userService = userService;
         }
+
 
         // GET: Login
         public ActionResult Login()
@@ -30,17 +27,17 @@ namespace Blog.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            var userModel = _accountRepository.LogIn(model);
-            if (userModel == null)
+            var result = _userService.Login(model);
+            if (result!=null)
             {
-                ViewBag.Error = "Email veya Şifre Uyuşmuyor";
-
+                ViewBag.Error = result;
                 return View();
             }
-
-            _accountRepository.SetSession(userModel);
-
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         public ActionResult Register()
@@ -49,18 +46,19 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(RegisterDto model)
+        public ActionResult Register(SigninDto model)
         {
             if (!ModelState.IsValid) return View();
 
-            var result = _accountRepository.Register(model);
+            var result = _userService.Signin(model);
             ViewBag.Error = result;
             return View();
         }
+
         [CustomActionFilter]
         public ActionResult SignOut()
         {
-            _accountRepository.LogOut();
+            _userService.Logout();
             return RedirectToAction("Index","Home");
         }
     }

@@ -22,12 +22,8 @@ namespace Blog.Models.User
         }
 
         public string Name { get; set; }
-        public string MiddleName { get; set; }
+        public string? MiddleName { get; set; }
         public string Surname { get; set; }
-
-        [MaxLength(250,ErrorMessage = "Max. 250 Karakter Olmalıdır.")]
-        public string? About { get; set; }
-
         [Required]
         [Index( IsUnique = true)]
         [MaxLength(50)]

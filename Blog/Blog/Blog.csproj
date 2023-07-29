@@ -293,12 +293,13 @@
     <Compile Include="Layers\Bussiness\DtoMappers\IUserMapper.cs" />
     <Compile Include="Layers\Bussiness\DtoMappers\UserMapper.cs" />
     <Compile Include="Layers\Bussiness\Methods\Crypts.cs" />
-    <Compile Include="Layers\Bussiness\Services\IUserService.cs" />
-    <Compile Include="Layers\Bussiness\Services\UserService.cs" />
-    <Compile Include="Layers\Repositories\AccountRepository\IAccountRepository.cs" />
-    <Compile Include="Layers\Repositories\AccountRepository\AccountRepository.cs" />
-    <Compile Include="Layers\Repositories\Entry\IEntryRepository.cs" />
-    <Compile Include="Layers\Repositories\Entry\EntryRepository.cs" />
+    <Compile Include="Layers\Bussiness\Services\EntryService\EntryService.cs" />
+    <Compile Include="Layers\Bussiness\Services\EntryService\IEntryService.cs" />
+    <Compile Include="Layers\Bussiness\Services\UserService\IUserService.cs" />
+    <Compile Include="Layers\Bussiness\Services\UserService\UserService.cs" />
+    <Compile Include="Layers\Models\Dtos\UserDtos\UpdateUserInformationDto.cs" />
+    <Compile Include="Layers\Repositories\EntryRepository\IEntryRepository.cs" />
+    <Compile Include="Layers\Repositories\EntryRepository\EntryRepository.cs" />
     <Compile Include="Layers\Repositories\UserRepository\UserRepository.cs" />
     <Compile Include="Layers\Controllers\HomeController.cs" />
     <Compile Include="Layers\Controllers\AccountController.cs" />
@@ -314,10 +315,10 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Layers\Bussiness\Context\BlogContext.cs" />
     <Compile Include="Layers\Models\Dtos\BaseDto.cs" />
-    <Compile Include="Layers\Models\Dtos\UpdatePasswordDto.cs" />
-    <Compile Include="Layers\Models\Dtos\LoginDto.cs" />
-    <Compile Include="Layers\Models\Dtos\RegisterDto.cs" />
-    <Compile Include="Layers\Models\Dtos\UserDto.cs" />
+    <Compile Include="Layers\Models\Dtos\UserDtos\UpdatePasswordDto.cs" />
+    <Compile Include="Layers\Models\Dtos\UserDtos\LoginDto.cs" />
+    <Compile Include="Layers\Models\Dtos\UserDtos\SigninDto.cs" />
+    <Compile Include="Layers\Models\Dtos\UserDtos\UserInformationDto.cs" />
     <Compile Include="Layers\Models\Entities\BaseEntity.cs" />
     <Compile Include="Layers\Models\Entities\Category.cs" />
     <Compile Include="Layers\Models\Entities\Comment.cs" />
@@ -890,10 +891,13 @@
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Entry\EntryShare.cshtml" />
     <Content Include="Scripts\tinymce\langs\README.md" />
+    <Content Include="Views\Settings\UpdatePassword.cshtml" />
+    <Content Include="Views\Settings\UpdateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Upload\UploadImage\PostImages\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

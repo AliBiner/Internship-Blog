@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Blog.Models.Dtos
 {
-    public class UserDto: BaseDto
+    public class UserInformationDto: BaseDto
     {
         
         public string FullName { get; set; }
@@ -18,7 +18,7 @@ namespace Blog.Models.Dtos
         [Required(ErrorMessage = "Boş Geçilemez")]
         public string Surname { get; set; }
 
-        public string About { get; set; }
+        public string? ProfileDescription { get; set; }
 
         [Required(ErrorMessage = "Boş Geçilemez")]
         public string Email { get; set; }

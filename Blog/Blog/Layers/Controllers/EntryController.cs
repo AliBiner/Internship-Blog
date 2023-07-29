@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Bussiness;
-using Blog.Bussiness.Repositories.Post;
+using Blog.Bussiness.Repositories.Entry;
 using Blog.Models.PostTable;
 using Blog.Repository;
 

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.UI.WebControls;
 using Blog.Bussiness.DtoConverter;
@@ -14,70 +17,44 @@ namespace Blog.Bussiness
     public class UserRepository : IUserRepository
     {
         private readonly BlogContext _blogContext;
-        private readonly IUserMapper _userMapper;
+        private readonly DbSet<User> _dbSet;
 
-        public UserRepository(BlogContext blogContext, IUserMapper userMapper)
+        public UserRepository(BlogContext blogContext)
         {
             _blogContext = blogContext;
-            _userMapper = userMapper;
+            _dbSet = _blogContext.Set<User>();
+        }
+        public User GetByEmail(string email)
+        {
+            return _dbSet.FirstOrDefault(x => x.Email == email);
         }
 
-        public string UpdatePassword(string currentPassword, string newPassword, string email)
+        public List<User> GetAll()
         {
-            var user = _blogContext.Users.FirstOrDefault(x => x.Email == email);
-
-            var passDecrypt = Crypts.Decrypt(user.PasswordHash);
-            if (passDecrypt!= currentPassword)
-            {
-                return "Mevcut Şifre Uyuşmuyor";
-            }
-            else
-            {
-                user.PasswordHash = Crypts.Encrypt(newPassword);
-                try
-                {
-                    _blogContext.SaveChanges();
-                    return "İşlem Başarılı";
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    return "İşlem Hatası!";
-                }
-            }
+            return _dbSet.ToList();
         }
 
         public void Remove(User entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
+            _blogContext.SaveChanges();
         }
 
-        public UserDto GetByEmail(string email)
+        public void Add(User entity)
         {
-            var userModel = _blogContext.Users.FirstOrDefault(x => x.Email == email);
-            var model = _userMapper.ToUserDto(userModel);
-            return model;
+            _blogContext.Users.Add(entity);
+            _blogContext.SaveChanges();
         }
 
-        public string UpdateUser(UserDto model,string sessionEmail)
+        public void Update(User entity)
         {
-            var user = _blogContext.Users.FirstOrDefault(x => x.Email == sessionEmail);
-            user.Email = model.Email;
-            user.Name = model.Name;
-            user.MiddleName = model.MiddleName;
-            user.Surname = model.Surname;
-            user.Phone = model.Phone;
-            user.UpdateDate = DateTime.Now;
-            try
-            {
-                _blogContext.SaveChanges();
-                return "İşlem Başarılı";
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return "Hata!";
-            }
+            _blogContext.SaveChanges();
+
+        }
+
+        public bool ControlByEmailAndPhone(string email, string phone)
+        {
+           return _dbSet.Any(x => x.Email == email || x.Phone == phone);
         }
     }
 }

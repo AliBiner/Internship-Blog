@@ -11,9 +11,15 @@ namespace Blog.Repository
 {
     public interface IUserRepository
     {
-        public UserDto GetByEmail(string email);
-        public string UpdatePassword(string currentPassword,string newPassword, string email);
-        public string UpdateUser(UserDto model,string sessionEmail);
+        public User GetByEmail(string email);
+        public List<User> GetAll();
         public void Remove(User entity);
+        public void Add(User entity);
+        public void Update(User entity);
+
+        public bool ControlByEmailAndPhone(string email, string phone);
+        //public string UpdatePassword(string currentPassword,string newPassword, string email);
+        //public string UpdateUser(UserInformationDto model,string sessionEmail);
+
     }
 }

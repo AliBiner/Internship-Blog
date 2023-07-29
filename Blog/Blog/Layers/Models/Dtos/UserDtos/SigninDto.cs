@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Blog.Models.Dtos
 {
-    public class RegisterDto : BaseDto
+    public class SigninDto : BaseDto
     {
         [Required(ErrorMessage = "Lütfen Adınızı Giriniz.")]
         public string Name { get; set; }
