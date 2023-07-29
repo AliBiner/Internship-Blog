@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using Blog.Bussiness.Methods;
+using Blog.Layers.Bussiness.DtoMappers;
 using Blog.Models.Context;
 using Blog.Models.User;
 
@@ -13,11 +14,14 @@ namespace Blog.Bussiness.Repositories.Login_Repository
     public class AccountRepository : IAccountRepository
     {
         private readonly BlogContext _blogContext;
+        private readonly IUserMapper _userMapper;
 
-        public AccountRepository()
+        public AccountRepository(BlogContext blogContext, IUserMapper userMapper)
         {
-            _blogContext = new BlogContext();
+            _blogContext = blogContext;
+            _userMapper = userMapper;
         }
+
         public User LogIn(LoginDto model)
         {
             var userModel = _blogContext.Users.FirstOrDefault(x => x.Email == model.Email);
@@ -51,7 +55,7 @@ namespace Blog.Bussiness.Repositories.Login_Repository
                     model.Id = Guid.NewGuid();
                     model.PasswordHash = Crypts.Encrypt(model.PasswordHash);
                     model.CreateDate = DateTime.Now;
-                    var user = DtoConverter.UserMapper.ConverterRegisterToUser(model);
+                    var user = _userMapper.RegisterDtoToUser(model);
                     _blogContext.Users.Add(user);
                     _blogContext.SaveChanges();
                     return "Kayıt İşlemi Başarılı.";

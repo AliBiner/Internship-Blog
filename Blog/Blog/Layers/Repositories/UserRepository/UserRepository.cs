@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.UI.WebControls;
+using Blog.Bussiness.DtoConverter;
 using Blog.Bussiness.Methods;
+using Blog.Layers.Bussiness.DtoMappers;
 using Blog.Models.Context;
 using Blog.Models.Dtos;
 using Blog.Models.User;
@@ -12,10 +14,12 @@ namespace Blog.Bussiness
     public class UserRepository : IUserRepository
     {
         private readonly BlogContext _blogContext;
+        private readonly IUserMapper _userMapper;
 
-        public UserRepository()
+        public UserRepository(BlogContext blogContext, IUserMapper userMapper)
         {
-            _blogContext = new BlogContext();
+            _blogContext = blogContext;
+            _userMapper = userMapper;
         }
 
         public string UpdatePassword(string currentPassword, string newPassword, string email)
@@ -51,7 +55,7 @@ namespace Blog.Bussiness
         public UserDto GetByEmail(string email)
         {
             var userModel = _blogContext.Users.FirstOrDefault(x => x.Email == email);
-            var model = DtoConverter.UserMapper.ConverterUserToUserDto(userModel);
+            var model = _userMapper.ToUserDto(userModel);
             return model;
         }
 
