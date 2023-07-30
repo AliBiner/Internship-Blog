@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Blog.Models.BaseDB;
-using Blog.Models.PostTable;
+using Blog.Models.Entities;
 
 namespace Blog.Models.Entities
 {
@@ -19,6 +18,7 @@ namespace Blog.Models.Entities
 
         
         public Entry Entry { get; set; }
+        public User User { get; set; }
 
         public List<Comment_Like> CommentLikes { get; set; }
     }

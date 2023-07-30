@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
-using Antlr.Runtime.Misc;
-using Blog.Models.BaseDB;
-using Blog.Models.Entities;
-using Blog.Models.PostTable;
 
-namespace Blog.Models.User
+
+namespace Blog.Models.Entities
 {
     public class User: BaseEntity
     {
         public User()
         {
-            Posts = new List<Entry>();
+            Entries = new List<Entry>();
             CommentLikes = new List<Comment_Like>();
-            PostLikes = new List<EntryLike>();
+            EntryLikes = new List<EntryLike>();
         }
 
         public string Name { get; set; }
@@ -38,9 +32,9 @@ namespace Blog.Models.User
         public byte[]? Image { get; set; }
         public DateTime? LostLogin { get; set; }
 
-        public List<Entry> Posts { get; set; }
+        public List<Entry> Entries { get; set; }
         public List<Comment_Like> CommentLikes { get; set; }
-        public List<EntryLike> PostLikes { get; set; }
+        public List<EntryLike> EntryLikes { get; set; }
 
     }
 }

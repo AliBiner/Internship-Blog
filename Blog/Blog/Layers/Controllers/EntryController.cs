@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Blog.Bussiness;
-using Blog.Bussiness.Repositories.Entry;
-using Blog.Models.PostTable;
-using Blog.Repository;
+using Blog.Layers.Bussiness;
+using Blog.Layers.Bussiness.Services.CommentService;
+using Blog.Layers.Bussiness.Services.EntryService;
+using Blog.Layers.Models.Dtos.CommentDtos;
+using Blog.Models.Entities;
 
-namespace Blog.Controllers
+namespace Blog.Layers.Controllers
 {
     [CustomActionFilter]
     public class EntryController : Controller
     {
-        private readonly IEntryRepository _entryRepository;
+        private readonly IEntryService _entryService;
+        private readonly ICommentService _commentService;
 
-        public EntryController(IEntryRepository entryRepository)
+        public EntryController(IEntryService entryService, ICommentService commentService)
         {
-            _entryRepository = entryRepository;
+            _entryService = entryService;
+            _commentService = commentService;
         }
-
-
         // GET: Entry
         public ActionResult EntryShare()
         {
@@ -33,10 +33,40 @@ namespace Blog.Controllers
         public ActionResult EntryShare(Entry entry)
         {
             var userEmail = Session["Email"].ToString();
-            _entryRepository.AddEntryByUserId(entry, userEmail);
+            //_entryRepository.AddEntryByUserId(entry, userEmail);
 
             return View();
         }
+
+        public ActionResult EntryById()
+        {
+            var id = "34ab2db2-f742-40b9-9f3c-3cbfc127ac27";
+            var entry = _entryService.GetEntryById(id);
+            TempData["Id"] = id;
+
+            return View(entry);
+        }
+
+        [ChildActionOnly]
+        public ActionResult PostCommitByEntryId()
+        {
+            ViewBag.Id = TempData["Id"].ToString();
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult PostCommitByEntryId(CommentByEntryIdDto dto)
+        {
+            var result = _commentService.PostCommentByEntryId(dto);
+
+            return RedirectToAction("EntryById", "Entry");
+        }
+
+
+
+
+
+
+
 
         //[HttpPost]
         //public ActionResult UploadImage(HttpPostedFileBase file)
@@ -56,5 +86,4 @@ namespace Blog.Controllers
         //    return Json(new { error = "Resim yüklenemedi." });
         //}
     }
-
 }

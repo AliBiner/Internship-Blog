@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Blog.Bussiness.Methods;
-using Blog.Layers.Bussiness.DtoMappers;
 using Blog.Layers.Models.Dtos;
-using Blog.Models.Dtos;
-using Blog.Models.User;
+using Blog.Models.Entities;
 
-namespace Blog.Bussiness.DtoConverter
+namespace Blog.Layers.Bussiness.DtoMappers
 {
     public class UserMapper : IUserMapper
     {

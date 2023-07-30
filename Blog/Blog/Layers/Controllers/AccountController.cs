@@ -1,8 +1,10 @@
 ﻿using System.Web.Mvc;
-using Blog.Bussiness;
-using Blog.Layers.Bussiness.Services;
-using Blog.Models.Dtos;
-using Blog.Repository;
+
+using Blog.Layers.Bussiness;
+
+using Blog.Layers.Bussiness.Services.EntryService;
+using Blog.Layers.Models.Dtos;
+
 
 namespace Blog.Controllers
 {

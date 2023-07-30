@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
-using Blog.Models.BaseDB;
 
 namespace Blog.Models.Entities
 {
@@ -15,7 +14,7 @@ namespace Blog.Models.Entities
 
         
         public Comment Comment { get; set; }
-        public User.User User { get; set; }
+        public User User { get; set; }
 
 
     }

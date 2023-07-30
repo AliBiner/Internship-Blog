@@ -1,12 +1,16 @@
 using System.Web.Mvc;
-using Blog.Bussiness;
-using Blog.Bussiness.DtoConverter;
-using Blog.Bussiness.Repositories.Entry;
+using Blog.Controllers;
 using Blog.Layers.Bussiness.DtoMappers;
-using Blog.Layers.Bussiness.Services;
-using Blog.Repository;
+using Blog.Layers.Bussiness.DtoMappers.CommentMapper;
+using Blog.Layers.Bussiness.DtoMappers.EntryMapper;
+using Blog.Layers.Bussiness.Services.CommentService;
+using Blog.Layers.Bussiness.Services.EntryService;
+using Blog.Layers.Controllers;
+using Blog.Layers.Repositories;
+using Blog.Layers.Repositories.CommentRepository;
 using Unity;
 using Unity.Injection;
+using Unity.Lifetime;
 using Unity.Mvc5;
 
 namespace Blog
@@ -22,12 +26,22 @@ namespace Blog
             
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IUserRepository, UserRepository>();
-            container.RegisterType<IEntryRepository, EntryRepository>();
             container.RegisterType<IUserMapper, UserMapper>();
             container.RegisterType<IUserService, UserService>();
-            
-            
-            
+
+            container.RegisterType<IEntryRepository, EntryRepository>();
+            container.RegisterType<IEntryService, EntryService>();
+            container.RegisterType<IEntryMapper, EntryMapper>();
+
+            container.RegisterType<ICommentRepository, CommentRepository>();
+            container.RegisterType<ICommentService, CommentService>();
+            container.RegisterType<ICommentMapper, CommentMapper>();
+
+
+
+
+
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

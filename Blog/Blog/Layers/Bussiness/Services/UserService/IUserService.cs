@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
+﻿
 using Blog.Layers.Models.Dtos;
-using Blog.Models.Dtos;
-using Blog.Models.User;
 
-namespace Blog.Layers.Bussiness.Services
+namespace Blog.Layers.Bussiness.Services.EntryService
 {
     public interface IUserService
     {

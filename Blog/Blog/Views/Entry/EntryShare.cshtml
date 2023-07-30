@@ -1,4 +1,5 @@
-﻿@model Blog.Models.PostTable.Entry
+﻿@model Blog.Models.Entities.Entry
+
 @{
     ViewBag.Title = "EntryShare";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
@@ -6,7 +7,7 @@
 
 <div class="container">
     <main id="main" class="main">
-        
+
 
         <section class="section">
             <div class="row">
@@ -15,45 +16,39 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Quill Editor Default</h5>-->
+                <!-- Quill Editor Default -->
+                <!--<div class="quill-editor-default">
+                    <p>Hello World!</p>
+                    <p>This is Quill <strong>default</strong> editor</p>
+                </div>-->
+                <!-- End Quill Editor Default -->
+                <!--</div>
+                </div>
 
-                            <!-- Quill Editor Default -->
-                            <!--<div class="quill-editor-default">
-                                <p>Hello World!</p>
-                                <p>This is Quill <strong>default</strong> editor</p>
-                            </div>-->
-                            <!-- End Quill Editor Default -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quill Editor Bubble</h5>-->
+                <!-- Quill Editor Bubble -->
+                <!--<p>Select some text to display options in poppovers</p>
+                <div class="quill-editor-bubble">
+                    <p>Hello World!</p>
+                    <p>This is Quill <strong>bubble</strong> editor</p>
+                </div>-->
+                <!-- End Quill Editor Bubble -->
+                <!--</div>
+                </div>
 
-                        <!--</div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Quill Editor Bubble</h5>-->
-
-                            <!-- Quill Editor Bubble -->
-                            <!--<p>Select some text to display options in poppovers</p>
-                            <div class="quill-editor-bubble">
-                                <p>Hello World!</p>
-                                <p>This is Quill <strong>bubble</strong> editor</p>
-                            </div>-->
-                            <!-- End Quill Editor Bubble -->
-
-                        <!--</div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Quill Editor Full</h5>-->
-
-                            <!-- Quill Editor Full -->
-                            <!--<p>Quill editor with full toolset</p>
-                            <div class="quill-editor-full">
-                                <p>Hello World!</p>
-                                <p>This is Quill <strong>full</strong> editor</p>
-                            </div>-->
-                            <!-- End Quill Editor Full -->
-
-                        <!--</div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quill Editor Full</h5>-->
+                <!-- Quill Editor Full -->
+                <!--<p>Quill editor with full toolset</p>
+                <div class="quill-editor-full">
+                    <p>Hello World!</p>
+                    <p>This is Quill <strong>full</strong> editor</p>
+                </div>-->
+                <!-- End Quill Editor Full -->
+                <!--</div>
                     </div>
 
                 </div>-->
@@ -65,10 +60,10 @@
                             <h5 class="card-title">Editör</h5>
                             @using (Html.BeginForm("EntryShare", "Entry", FormMethod.Post))
                             {
-                                @Html.TextAreaFor(model=>model.Description, new {@class= "editor" })
-                                <input type="submit" value="Yayınla"/>
+                                @Html.TextAreaFor(model => model.Description, new { @class = "editor" })
+                                <input type="submit" value="Yayınla" />
                             }
-                            
+
 
                         </div>
                     </div>
@@ -79,4 +74,5 @@
 
     </main><!-- End #main -->
 </div>
+
 

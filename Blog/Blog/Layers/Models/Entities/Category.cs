@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Blog.Models.BaseDB;
-using Blog.Models.PostTable;
+using Blog.Models.Entities;
 
 namespace Blog.Models.Entities
 {
@@ -11,13 +10,13 @@ namespace Blog.Models.Entities
     {
         public Category()
         {
-            Posts = new List<Entry>();
+            Entries = new List<Entry>();
             Comments = new List<Comment>();
         }
         public string Name { get; set; }
         public string Slug { get; set; }
 
-        public List<Entry> Posts { get; set; }
+        public List<Entry> Entries { get; set; }
         public List<Comment> Comments { get; set; }
     }
 }

@@ -1,13 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI.WebControls;
-using Blog.Models.Dtos;
-using Blog.Models.User;
 
-namespace Blog.Repository
+using Blog.Models.Entities;
+
+
+namespace Blog.Layers.Repositories
 {
     public interface IUserRepository
     {
@@ -16,6 +14,7 @@ namespace Blog.Repository
         public void Remove(User entity);
         public void Add(User entity);
         public void Update(User entity);
+        public User GetById(Guid id);
 
         public bool ControlByEmailAndPhone(string email, string phone);
         //public string UpdatePassword(string currentPassword,string newPassword, string email);

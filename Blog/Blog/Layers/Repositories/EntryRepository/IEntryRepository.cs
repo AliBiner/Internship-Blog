@@ -4,24 +4,24 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using Blog.Models.User;
-using Unity.Storage;
 
-namespace Blog.Bussiness.Repositories.Entry
+using Blog.Models.Entities;
+
+
+namespace Blog.Layers.Repositories
 {
     public interface IEntryRepository
     {
-        string AddEntryByUserId(Models.PostTable.Entry entry, string userEmail);
-        Models.PostTable.Entry GetEntryById(Guid id);
+        //string AddEntryByUserId(Models.PostTable.Entry entry, string userEmail);
+        //Models.PostTable.Entry GetEntryById(Guid id);
 
-        string UploadImage(HttpPostedFileBase file);
+        //string UploadImage(HttpPostedFileBase file);
 
-        public RegistrationSet.Entry GetById(Guid Id);
-        public List<User> GetAll();
-        public void Remove(User entity);
-        public void Add(User entity);
-        public void Update(User entity);
+        public Entry GetById(Guid Id);
+        public List<Entry> GetAll();
+        public void Remove(Entry entity);
+        public void Add(Entry entity);
+        public void Update(Entry entity);
 
     }
 }

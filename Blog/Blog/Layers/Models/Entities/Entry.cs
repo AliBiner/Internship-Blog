@@ -4,17 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Windows.Forms.PropertyGridInternal;
-using Blog.Models.BaseDB;
 using Blog.Models.Entities;
 
-namespace Blog.Models.PostTable
+namespace Blog.Models.Entities
 {
     public class Entry : BaseEntity
     {
         public Entry()
         {
             Comments = new List<Comment>();
-            PostLikes = new List<EntryLike>();
+            EntryLikes = new List<EntryLike>();
         }
 
         public string Title { get; set; }
@@ -27,11 +26,11 @@ namespace Blog.Models.PostTable
 
 
         
-        public User.User User { get; set; }
+        public User User { get; set; }
         public Category Category { get; set; }
 
         public List<Comment> Comments { get; set; }
-        public List<EntryLike> PostLikes { get; set; }
+        public List<EntryLike> EntryLikes { get; set; }
 
     }
 }

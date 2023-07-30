@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using Blog.Models.Entities;
-using Blog.Models.PostTable;
 
-namespace Blog.Models.Context
+namespace Blog.Layers.Bussiness
 {
     public class BlogContext: DbContext
     {
@@ -15,11 +10,12 @@ namespace Blog.Models.Context
             this.Configuration.LazyLoadingEnabled = true;
         }
 
-        public DbSet<User.User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Comment_Like> CommentLikes { get; set; }
-        public DbSet<Entry> Posts { get; set; }
-        public DbSet<EntryLike> PostLikes { get; set; }
+        public DbSet<Entry> Entries { get; set; }
+        public DbSet<EntryLike> EntryLikes { get; set; }
+       
     }
 }

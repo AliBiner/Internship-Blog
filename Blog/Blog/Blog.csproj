@@ -261,13 +261,19 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Unity.Abstractions.5.11.7\lib\net47\Unity.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Container.dll</HintPath>
+      <HintPath>..\packages\Unity.Container.5.11.11\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.5.11.1\lib\net47\Unity.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mvc5, Version=1.4.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.Mvc5.1.4.0\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -290,27 +296,38 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Layers\Bussiness\CustomActionFilter.cs" />
-    <Compile Include="Layers\Bussiness\DtoMappers\IUserMapper.cs" />
-    <Compile Include="Layers\Bussiness\DtoMappers\UserMapper.cs" />
+    <Compile Include="Layers\Bussiness\DtoMappers\CommentMapper\CommentMapper.cs" />
+    <Compile Include="Layers\Bussiness\DtoMappers\CommentMapper\ICommentMapper.cs" />
+    <Compile Include="Layers\Bussiness\DtoMappers\EntryMapper\EntryMapper.cs" />
+    <Compile Include="Layers\Bussiness\DtoMappers\EntryMapper\IEntryMapper.cs" />
+    <Compile Include="Layers\Bussiness\DtoMappers\UserMapper\IUserMapper.cs" />
+    <Compile Include="Layers\Bussiness\DtoMappers\UserMapper\UserMapper.cs" />
     <Compile Include="Layers\Bussiness\Methods\Crypts.cs" />
+    <Compile Include="Layers\Bussiness\Services\CommentService\CommentService.cs" />
+    <Compile Include="Layers\Bussiness\Services\CommentService\ICommentService.cs" />
     <Compile Include="Layers\Bussiness\Services\EntryService\EntryService.cs" />
     <Compile Include="Layers\Bussiness\Services\EntryService\IEntryService.cs" />
     <Compile Include="Layers\Bussiness\Services\UserService\IUserService.cs" />
     <Compile Include="Layers\Bussiness\Services\UserService\UserService.cs" />
+    <Compile Include="Layers\Controllers\DenemeController.cs" />
+    <Compile Include="Layers\Controllers\EntryController.cs" />
+    <Compile Include="Layers\Models\Dtos\CommentDtos\CommentByEntryIdDto.cs" />
+    <Compile Include="Layers\Models\Dtos\EntryDtos\EntryByIdDto.cs" />
     <Compile Include="Layers\Models\Dtos\UserDtos\UpdateUserInformationDto.cs" />
+    <Compile Include="Layers\Repositories\CommentRepository\CommentRepository.cs" />
+    <Compile Include="Layers\Repositories\CommentRepository\ICommentRepository.cs" />
     <Compile Include="Layers\Repositories\EntryRepository\IEntryRepository.cs" />
     <Compile Include="Layers\Repositories\EntryRepository\EntryRepository.cs" />
     <Compile Include="Layers\Repositories\UserRepository\UserRepository.cs" />
     <Compile Include="Layers\Controllers\HomeController.cs" />
     <Compile Include="Layers\Controllers\AccountController.cs" />
-    <Compile Include="Layers\Controllers\EntryController.cs" />
     <Compile Include="Layers\Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202307281312146_deneme.cs" />
-    <Compile Include="Migrations\202307281312146_deneme.designer.cs">
-      <DependentUpon>202307281312146_deneme.cs</DependentUpon>
+    <Compile Include="Migrations\202307300654378_m1.cs" />
+    <Compile Include="Migrations\202307300654378_m1.designer.cs">
+      <DependentUpon>202307300654378_m1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Layers\Bussiness\Context\BlogContext.cs" />
@@ -889,10 +906,13 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
-    <Content Include="Views\Entry\EntryShare.cshtml" />
     <Content Include="Scripts\tinymce\langs\README.md" />
     <Content Include="Views\Settings\UpdatePassword.cshtml" />
     <Content Include="Views\Settings\UpdateUser.cshtml" />
+    <Content Include="Views\Entry\EntryShare.cshtml" />
+    <Content Include="Views\Entry\EntryById.cshtml" />
+    <Content Include="Views\Entry\PostCommitByEntryId.cshtml" />
+    <Content Include="Views\Deneme\DenemeShare.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -921,8 +941,8 @@
     <TypeScriptCompile Include="Scripts\tinymce\tinymce.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202307281312146_deneme.resx">
-      <DependentUpon>202307281312146_deneme.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202307300654378_m1.resx">
+      <DependentUpon>202307300654378_m1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

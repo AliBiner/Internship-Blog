@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 
-namespace Blog.Models.Dtos
+namespace Blog.Layers.Models.Dtos
 {
     public class UpdatePasswordDto
     {

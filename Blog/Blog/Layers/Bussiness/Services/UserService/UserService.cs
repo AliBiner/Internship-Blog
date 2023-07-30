@@ -1,20 +1,14 @@
-﻿using Blog.Models.Dtos;
+﻿
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Web;
-using System.Web.ModelBinding;
-using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.UI.WebControls;
 using Blog.Bussiness.Methods;
 using Blog.Layers.Bussiness.DtoMappers;
 using Blog.Layers.Models.Dtos;
-using Blog.Models.User;
-using Blog.Repository;
+using Blog.Layers.Repositories;
+using Blog.Models.Entities;
 
-namespace Blog.Layers.Bussiness.Services
+namespace Blog.Layers.Bussiness.Services.EntryService
 {
     public class UserService : IUserService
     {

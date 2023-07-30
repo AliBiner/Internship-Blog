@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿
 using System.Web.Mvc;
-using Blog.Bussiness;
-using Blog.Models.Context;
+using Blog.Layers.Bussiness.Services.EntryService;
+
 
 namespace Blog.Controllers
 {
@@ -13,6 +9,7 @@ namespace Blog.Controllers
     public class HomeController : Controller
     {
         
+
         public ActionResult Index()
         {
             
@@ -28,6 +25,8 @@ namespace Blog.Controllers
             }
             
         }
+
+       
 
 
     }

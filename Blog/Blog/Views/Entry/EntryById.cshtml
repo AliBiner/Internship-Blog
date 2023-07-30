@@ -1,0 +1,60 @@
+﻿@model Blog.Layers.Models.Dtos.EntryDtos.EntryByIdDto
+
+@{
+    ViewBag.Title = "EntryById";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<<div class="container">
+    <main id="main" class="main">
+        <section class="section">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    @Html.Raw(Model.Description)
+                </div>
+                <div class="col">
+                    <div class="col-md-12 col-sm-12">
+                        <div>
+                            @Model.AuthorName
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 text-right">
+                        <div>
+                            @Model.CreateDate
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    @foreach (var item in Model.Comments)
+                    {
+                        <div class=" col-md-12 col-sm-12 container">
+                            <div>
+                                @item.Title
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div>
+
+                    @{
+
+                        Html.Action("PostCommitByEntryId", "Entry");
+                    }
+
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+    </main>
+
+
+
+</div>
+
+

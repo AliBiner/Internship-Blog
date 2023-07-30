@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using Blog.Bussiness;
-using Blog.Layers.Bussiness.Services;
+﻿using System.Web.Mvc;
+using Blog.Layers.Bussiness;
+using Blog.Layers.Bussiness.Services.EntryService;
 using Blog.Layers.Models.Dtos;
-using Blog.Models.Dtos;
-using Blog.Repository;
-
 namespace Blog.Controllers
 {
     [CustomActionFilter]

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
 
-namespace Blog.Models.BaseDB
+namespace Blog.Models.Entities
 {
     public abstract class BaseEntity
     {
@@ -16,6 +16,6 @@ namespace Blog.Models.BaseDB
         public DateTime CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public DateTime? DeleteDate { get; set; }
-    
+
     }
 }

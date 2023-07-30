@@ -1,18 +1,16 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Web.UI.WebControls;
-using Blog.Bussiness.DtoConverter;
-using Blog.Bussiness.Methods;
-using Blog.Layers.Bussiness.DtoMappers;
-using Blog.Models.Context;
-using Blog.Models.Dtos;
-using Blog.Models.User;
-using Blog.Repository;
 
-namespace Blog.Bussiness
+using System.Linq;
+
+using Blog.Layers.Bussiness;
+
+
+using Blog.Models.Entities;
+
+namespace Blog.Layers.Repositories
 {
     public class UserRepository : IUserRepository
     {
@@ -27,6 +25,11 @@ namespace Blog.Bussiness
         public User GetByEmail(string email)
         {
             return _dbSet.FirstOrDefault(x => x.Email == email);
+        }
+
+        public User GetById(Guid id)
+        {
+            return _dbSet.FirstOrDefault(x => x.Id == id);
         }
 
         public List<User> GetAll()
