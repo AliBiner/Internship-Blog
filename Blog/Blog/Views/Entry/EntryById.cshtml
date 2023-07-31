@@ -1,4 +1,4 @@
-﻿@model Blog.Layers.Models.Dtos.EntryDtos.EntryByIdDto
+﻿@model Blog.Layers.Models.Dtos.EntryDtos.EntryWithCommentsDto
 
 @{
     ViewBag.Title = "EntryById";
@@ -12,13 +12,13 @@
                 <div class="col-md-12 col-sm-12">
                     @Html.Raw(Model.Description)
                 </div>
-                <div class="col">
-                    <div class="col-md-12 col-sm-12">
+                <div class="row">
+                    <div class="col-md-6 col-sm-3">
                         <div>
                             @Model.AuthorName
                         </div>
                     </div>
-                    <div class="col-md-12 col-sm-12 text-right">
+                    <div class="col-md-6 col-sm-3 text-right">
                         <div>
                             @Model.CreateDate
                         </div>
@@ -27,20 +27,42 @@
 
                 </div>
                 <div class="col-md-12 col-sm-12">
-                    @foreach (var item in Model.Comments)
-                    {
-                        <div class=" col-md-12 col-sm-12 container">
-                            <div>
-                                @item.Title
-                            </div>
-                        </div>
-                    }
+                    <h5 class="comment-title py-4">@Model.Comments.Count  Yorumlar</h5>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                   
+                        
+                     <div class="comments">
+                         @foreach (var item in Model.Comments)
+                         {
+                             <div class="comment d-flex my-3">
+                                 <div class="flex-shrink-0">
+                                     <div class="avatar avatar-sm rounded-circle">
+                                         <img class="avatar-img" src="~/assets/img/person-2.jpg" alt="" class="img-fluid">
+                                     </div>
+                                 </div>
+                                 <div class="flex-shrink-1 ms-2 ms-sm-3">
+                                     <div class="comment-meta d-flex">
+                                         <h6 class="me-xxl-5">@item.User.Name @item.User.Surname</h6>
+                                         <h6>@item.CreateDate</h6>
+                                     </div>
+                                     <div class="my-3">
+                                         <h4>@item.Title</h4>
+                                     </div>
+                                     <div class="comment-body my-3">
+                                         @item.Summary
+                                     </div>
+                                 </div>
+                             </div>
+                         }
+                    </div>
+                   
                 </div>
                 <div>
 
                     @{
 
-                        Html.Action("PostCommitByEntryId", "Entry");
+                        Html.RenderAction("PostCommitByEntryId", "Entry");
                     }
 
 

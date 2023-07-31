@@ -13,24 +13,25 @@ namespace Blog.Models.Entities
         public Entry()
         {
             Comments = new List<Comment>();
-            EntryLikes = new List<EntryLike>();
+            //EntryLikes = new List<EntryLike>();
         }
 
-        public string Title { get; set; }
-        public string MetaTitle { get; set; }
-        public string Slug { get; set; }
+        public string? Title { get; set; }
+        public string? MetaTitle { get; set; }
+        public string? Slug { get; set; }
         public string Description { get; set; }
         public Boolean Published { get; set; }
-        public byte[] Image1 { get; set; }
-        public byte[] Image2 { get; set; }
+        public byte[]? Image1 { get; set; }
+        public byte[]? Image2 { get; set; }
 
 
-        
+        public Guid UserId { get; set; }
         public User User { get; set; }
+        public Guid CategoryId { get; set; }
         public Category Category { get; set; }
 
         public List<Comment> Comments { get; set; }
-        public List<EntryLike> EntryLikes { get; set; }
+        //public List<EntryLike> EntryLikes { get; set; }
 
     }
 }

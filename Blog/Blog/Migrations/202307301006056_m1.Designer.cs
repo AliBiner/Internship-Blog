@@ -13,12 +13,12 @@ namespace Blog.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202307300654378_m1"; }
+            get { return "202307301006056_m1"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

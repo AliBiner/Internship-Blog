@@ -6,8 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 
 using Blog.Layers.Bussiness;
-
-
+using Blog.Layers.Models.Dtos.UserDtos;
 using Blog.Models.Entities;
 
 namespace Blog.Layers.Repositories
@@ -16,7 +15,6 @@ namespace Blog.Layers.Repositories
     {
         private readonly BlogContext _blogContext;
         private readonly DbSet<User> _dbSet;
-
         public UserRepository(BlogContext blogContext)
         {
             _blogContext = blogContext;
@@ -32,10 +30,11 @@ namespace Blog.Layers.Repositories
             return _dbSet.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<User> GetAll()
-        {
-            return _dbSet.ToList();
-        }
+        //public List<AllUserForAccountManage> GetAll()
+        //{
+        //    var query
+        //    return _dbSet.ToList();
+        //}
 
         public void Remove(User entity)
         {
@@ -58,6 +57,11 @@ namespace Blog.Layers.Repositories
         public bool ControlByEmailAndPhone(string email, string phone)
         {
            return _dbSet.Any(x => x.Email == email || x.Phone == phone);
+        }
+
+        public List<User> GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

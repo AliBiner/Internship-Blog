@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Blog.Layers.Bussiness.DtoMappers.EntryMapper;
 using Blog.Layers.Models.Dtos.CommentDtos;
@@ -19,15 +20,35 @@ namespace Blog.Layers.Bussiness.Services.EntryService
             _entryMapper = entryMapper;
         }
 
-
-        public EntryByIdDto GetEntryById(string id)
+        public string Add(EntryShareDtoTo dto)
         {
-            var Id = Guid.Parse(id);
-            var entryModel = _entryRepository.GetById(Id);
+            var entry = _entryMapper.EntryShareDtoTo(dto);
+            try
+            {
+                _entryRepository.Add(entry);
+                return "İşlem Başarılı";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return "İşlem Hatası";
+
+            }
+            
+
+        }
+
+        public EntryWithCommentsDto GetEntryById(Guid id)
+        {
+            var entryModel = _entryRepository.GetById(id);
             var entryDto = _entryMapper.EntryToEntryByIdDto(entryModel);
             return entryDto;
         }
 
-
+        public List<TenEntriesDto> GetTenEntry()
+        {
+            var model =_entryRepository.GetTen();
+            return model;
+        }
     }
 }

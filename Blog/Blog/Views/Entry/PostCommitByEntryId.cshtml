@@ -17,8 +17,8 @@
                     <textarea class="form-control" id="comment-message" name="Message" placeholder="Mesaj" cols="30" rows="10"></textarea>
                 </div>
                 <div class="col-12">
-                    @*<input type="hidden" name="UserId" value="@Guid.Parse(Session["Id"].ToString())"/>
-                        <input type="hidden" name="EntryId" value="@Guid.Parse(ViewBag.Id)"/>*@
+                    <input type="hidden" name="UserId" value="@Guid.Parse(Session["Id"].ToString())"/>
+                        <input type="hidden" name="EntryId" value="@Guid.Parse(ViewBag.Id)"/>
                     <input type="submit" class="btn btn-primary" value="Paylaş">
                 </div>
             </div>

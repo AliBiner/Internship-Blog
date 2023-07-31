@@ -10,7 +10,7 @@ namespace Blog.Layers.Bussiness.DtoMappers.CommentMapper
 {
     public interface ICommentMapper
     {
-        public Comment CommentByEntryDtoTo(CommentByEntryIdDto dto, Entry entry, User user);
+        public Comment CommentByEntryDtoTo(CommentByEntryIdDto dto);
 
     }
 }

@@ -11,8 +11,8 @@ namespace Blog.Models.Entities
         public User()
         {
             Entries = new List<Entry>();
-            CommentLikes = new List<Comment_Like>();
-            EntryLikes = new List<EntryLike>();
+            //CommentLikes = new List<Comment_Like>();
+            //EntryLikes = new List<EntryLike>();
         }
 
         public string Name { get; set; }
@@ -33,8 +33,8 @@ namespace Blog.Models.Entities
         public DateTime? LostLogin { get; set; }
 
         public List<Entry> Entries { get; set; }
-        public List<Comment_Like> CommentLikes { get; set; }
-        public List<EntryLike> EntryLikes { get; set; }
+        //public List<Comment_Like> CommentLikes { get; set; }
+        //public List<EntryLike> EntryLikes { get; set; }
 
     }
 }

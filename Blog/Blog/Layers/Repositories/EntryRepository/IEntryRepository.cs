@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Blog.Layers.Models.Dtos.EntryDtos;
 using Blog.Models.Entities;
 
 
@@ -19,6 +19,7 @@ namespace Blog.Layers.Repositories
 
         public Entry GetById(Guid Id);
         public List<Entry> GetAll();
+        public List<TenEntriesDto> GetTen();
         public void Remove(Entry entity);
         public void Add(Entry entity);
         public void Update(Entry entity);

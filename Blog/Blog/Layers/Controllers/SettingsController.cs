@@ -52,5 +52,17 @@ namespace Blog.Controllers
             var result = _userService.Update(dto, sessionEmail);
             return RedirectToAction("Index","Settings");
         }
+
+        public ActionResult AccontManage()
+        {
+           
+            return View();
+        }
+
+        //[HttpPost]
+        //public ActionResult AccontManage()
+        //{
+        //    re
+        //}
     }
 }

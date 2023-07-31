@@ -1,10 +1,12 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using Blog.Bussiness.Methods;
 using Blog.Layers.Bussiness.DtoMappers;
 using Blog.Layers.Models.Dtos;
+using Blog.Layers.Models.Dtos.UserDtos;
 using Blog.Layers.Repositories;
 using Blog.Models.Entities;
 
@@ -20,6 +22,18 @@ namespace Blog.Layers.Bussiness.Services.EntryService
             _userRepository = userRepository;
             _userMapper = userMapper;
         }
+
+        public List<AllUserForAccountManage> GetAllUserForAccountManage()
+        {
+            throw new NotImplementedException();
+        }
+
+        //public List<AllUserForAccountManage> GetAllUserForAccountManage()
+        //{
+        //    var users = _userRepository.GetAll();
+        //    var model = _userMapper.toAllUserForAccountManage(users);
+        //    return 
+        //}
 
         public UserInformationDto GetUserByEmail(string email)
         {

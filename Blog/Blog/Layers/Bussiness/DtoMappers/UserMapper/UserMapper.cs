@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Blog.Bussiness.Methods;
 using Blog.Layers.Models.Dtos;
+using Blog.Layers.Models.Dtos.UserDtos;
 using Blog.Models.Entities;
 
 namespace Blog.Layers.Bussiness.DtoMappers
@@ -57,5 +59,16 @@ namespace Blog.Layers.Bussiness.DtoMappers
             u.UpdateDate = DateTime.Now;
             return u;
         }
+
+        public AllUserForAccountManage toAllUserForAccountManage(User u)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public AllUserForAccountManage toAllUserForAccountManage(List<User> u)
+        //{
+        //    var model = new List<AllUserForAccountManage>();
+
+        //}
     }
 }

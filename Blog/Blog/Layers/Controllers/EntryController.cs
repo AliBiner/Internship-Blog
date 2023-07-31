@@ -7,6 +7,7 @@ using Blog.Layers.Bussiness;
 using Blog.Layers.Bussiness.Services.CommentService;
 using Blog.Layers.Bussiness.Services.EntryService;
 using Blog.Layers.Models.Dtos.CommentDtos;
+using Blog.Layers.Models.Dtos.EntryDtos;
 using Blog.Models.Entities;
 
 namespace Blog.Layers.Controllers
@@ -30,17 +31,15 @@ namespace Blog.Layers.Controllers
 
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult EntryShare(Entry entry)
+        public ActionResult EntryShare(EntryShareDtoTo entry)
         {
-            var userEmail = Session["Email"].ToString();
-            //_entryRepository.AddEntryByUserId(entry, userEmail);
-
+            //var userEmail = Session["Email"].ToString();
+            _entryService.Add(entry);
             return View();
         }
 
-        public ActionResult EntryById()
+        public ActionResult EntryById(Guid id)
         {
-            var id = "34ab2db2-f742-40b9-9f3c-3cbfc127ac27";
             var entry = _entryService.GetEntryById(id);
             TempData["Id"] = id;
 
@@ -58,11 +57,12 @@ namespace Blog.Layers.Controllers
         {
             var result = _commentService.PostCommentByEntryId(dto);
 
-            return RedirectToAction("EntryById", "Entry");
+            return RedirectToAction("EntryById", "Entry",dto.EntryId);
         }
 
 
-
+        
+        
 
 
 

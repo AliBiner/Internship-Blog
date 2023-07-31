@@ -10,7 +10,8 @@ namespace Blog.Layers.Bussiness.DtoMappers.EntryMapper
 {
     public interface IEntryMapper
     {
-        public EntryByIdDto EntryToEntryByIdDto(Entry entry);
+        public EntryWithCommentsDto EntryToEntryByIdDto(Entry entry);
+        public Entry EntryShareDtoTo(EntryShareDtoTo dto);
 
     }
 }

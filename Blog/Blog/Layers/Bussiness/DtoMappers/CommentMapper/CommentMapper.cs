@@ -9,15 +9,16 @@ namespace Blog.Layers.Bussiness.DtoMappers.CommentMapper
 {
     public class CommentMapper : ICommentMapper
     {
-        public Comment CommentByEntryDtoTo(CommentByEntryIdDto dto,Entry entry, User user)
+        public Comment CommentByEntryDtoTo(CommentByEntryIdDto dto)
         {
             return new Comment()
             {
-                Entry = entry,
-                User = user,
+                EntryId = dto.EntryId,
+                UserId = dto.UserId,
                 Title = dto.Title,
                 Summary = dto.Message,
-                CreateDate = DateTime.Now
+                CreateDate = DateTime.Now,
+                Id = Guid.NewGuid()
 
             };
         }

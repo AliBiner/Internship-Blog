@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using Blog.Layers.Bussiness;
+using Blog.Layers.Models.Dtos.EntryDtos;
 using Blog.Models.Entities;
 
 namespace Blog.Layers.Repositories
@@ -24,6 +26,7 @@ namespace Blog.Layers.Repositories
             _dbSet.Add(entity);
             _blogContext.SaveChanges();
         }
+       
 
         public List<Entry> GetAll()
         {
@@ -33,7 +36,29 @@ namespace Blog.Layers.Repositories
         public Entry GetById(Guid Id)
         {
             
-            return _dbSet.Include(x=>x.User).Include(x=>x.Comments).Include(x=>x.EntryLikes).FirstOrDefault(x => x.Id == Id);
+            return _dbSet.Include(x=>x.User).Include(x=>x.Comments).FirstOrDefault(x => x.Id == Id);
+        }
+
+        public List<TenEntriesDto> GetTen()
+        {
+            
+            var query = (from e in _blogContext.Entries
+                join u in _blogContext.Users on e.UserId equals u.Id
+                join c in _blogContext.Categories on e.CategoryId equals c.Id
+                where c.Name == "Deneme"
+                select new TenEntriesDto()
+                {
+                    EntryId = e.Id,
+                    Title = e.Title,
+                    Summary = e.MetaTitle,
+                    CreateDate = e.CreateDate,
+                    UserName = u.Name,
+                    UserSurName = u.Surname,
+                    CategoryName = c.Name
+                }).Take(10).ToList();
+
+            return query;
+
         }
 
         public void Remove(Entry entity)

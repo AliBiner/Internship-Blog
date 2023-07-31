@@ -11,14 +11,29 @@ namespace Blog.Layers.Bussiness.DtoMappers.EntryMapper
 {
     public class EntryMapper : IEntryMapper
     {
-        public EntryByIdDto EntryToEntryByIdDto(Entry entry)
+        public Entry EntryShareDtoTo(EntryShareDtoTo dto)
         {
-            return new EntryByIdDto()
+            return new Entry()
+            {
+                Id = Guid.NewGuid(),
+                CreateDate = DateTime.Now,
+                Title = dto.Title,
+                MetaTitle = dto.Summary,
+                Description = dto.Description,
+                UserId = dto.UserId,
+                Published = true,
+                CategoryId = Guid.Parse("98cabadb-7b7b-4089-b919-337693952c50")
+
+            };
+        }
+
+        public EntryWithCommentsDto EntryToEntryByIdDto(Entry entry)
+        {
+            return new EntryWithCommentsDto()
             {
                 Description = entry.Description,
                 AuthorName = entry.User.Name + " " + entry.User.Surname,
                 Comments = entry.Comments,
-                EntryLikes = entry.EntryLikes,
                 CreateDate = entry.CreateDate,
                 Id = entry.Id
             };

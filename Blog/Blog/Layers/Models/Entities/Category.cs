@@ -11,12 +11,10 @@ namespace Blog.Models.Entities
         public Category()
         {
             Entries = new List<Entry>();
-            Comments = new List<Comment>();
         }
         public string Name { get; set; }
         public string Slug { get; set; }
 
         public List<Entry> Entries { get; set; }
-        public List<Comment> Comments { get; set; }
     }
 }

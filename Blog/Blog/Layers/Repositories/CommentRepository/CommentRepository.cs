@@ -13,11 +13,12 @@ namespace Blog.Layers.Repositories.CommentRepository
         private readonly BlogContext _blogContext;
         private readonly DbSet<Comment> _dbSet;
 
-        public CommentRepository(BlogContext blogContext, DbSet<Comment> dbSet)
+        public CommentRepository(BlogContext blogContext)
         {
             _blogContext = blogContext;
             _dbSet = _blogContext.Set<Comment>();
         }
+
 
 
         public void Add(Comment comment)
